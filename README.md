@@ -1,8 +1,8 @@
-##### 从这个项目  https://github.com/BurlyLuo/clab/blob/master/KinD.png fork 过来的。
+##### 从这个项目  https://github.com/BurlyLuo/clab fork 过来的,有一些修改。
 
 
 ## CONTAINERlab + KinD
-![](https://github.com/BurlyLuo/clab/blob/master/KinD.png)
+![](https://github.com/bigjordon/kind-clab-calico/blob/main/KinD.png)
 ### 1. CONTAINERlab and KinD to deploy a new K8S cluster
 The tool KinD can deploy a K8S cluster quicklly, but all the nodes usder the same subnet, so if want set the nodes under different subnets, CONTAINERlab can provide the network resources.
 
@@ -35,7 +35,7 @@ clab-bgp-cplane-demo-worker2         NotReady   <none>                 14m   v1.
 clab-bgp-cplane-demo-worker3         NotReady   <none>                 14m   v1.23.4   172.18.0.4    <none>        Ubuntu 21.10   5.15.0-46-generic   containerd://1.5.10
 ```
 
-![](https://github.com/BurlyLuo/clab/blob/master/CONTAINERlab.png)
+![](https://github.com/bigjordon/kind-clab-calico/blob/main/CONTAINERlab.png)
 ### 3. Deploy the network resources with CONTAINERlab
 ```
  brctl addbr br-leaf0
@@ -97,7 +97,8 @@ Run 'containerlab version upgrade' to upgrade or go check other installation opt
  the router's configuration can be found at [startup-config](https://github.com/BurlyLuo/clab/tree/master/startup-config)
 So with this logical, we can get a full topo as below:
 
-![](https://github.com/BurlyLuo/clab/blob/master/TOPO.png)
+![](https://github.com/bigjordon/kind-clab-calico/blob/main/TOPO.png)
+![](https://github.com/bigjordon/kind-clab-calico/blob/main/net-topo.png)
 
 
 
