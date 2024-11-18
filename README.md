@@ -171,4 +171,10 @@ sh adv-clusterip.sh
 show ip route
 
 
+# a net tool smamle to test network
+# 虽然叫cni
+
+kubectl apply -f test-net.yaml
+
 ```
+

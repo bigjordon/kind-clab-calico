@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  labels:
+    app: test-net-service
+  name: test-net-service
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-net-service
+  template:
+    metadata:
+      labels:
+        app: test-net-service
+    spec:
+      containers:
+      - image: burlyluo/nettoolbox
+        name: nettoolbox
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-net-service-svc
+  namespace: test
+  labels:
+    app: test-net-service
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: test-net-service
+  type: ClusterIP
+
+
+
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: test-net-ds
+  name: test-net-ds
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: test-net-ds
+  template:
+    metadata:
+      labels:
+        app: test-net-ds
+    spec:
+      containers:
+      - image: burlyluo/nettoolbox
+        name: nettoolbox
+
