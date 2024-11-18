@@ -178,3 +178,19 @@ kubectl apply -f test-net.yaml
 
 ```
 
+
+
+```
+DEBUG:
+
+
+宿主机：
+docker ps
+docker exec -it clab-bgp-cplane-demo-leaf0 /bin/bash
+show ip bgp
+
+su vyos
+configure
+show protocals bgp
+
+```
