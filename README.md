@@ -47,6 +47,14 @@ clab-bgp-cplane-demo-worker3         NotReady   <none>                 14m   v1.
  ifconfig br-leaf1 up
 
 # clab -t topo.yaml deploy 
+----
+使用startup-config 的配置文件配置vyos的网络
+
+spine1.cfg ...  是原始的配置命令
+boot.spine1.cfg 是配置完生成的配置文件，可以直接挂载使用，里边的东西不能改，估计有签名吧
+---
+
+
 INFO[0000] Containerlab v0.30.0 started                 
 INFO[0000] Parsing & checking topology file: topo.yaml  
 INFO[0000] Pulling docker.io/burlyluo/nettoolbox:latest Docker image 
@@ -154,6 +162,13 @@ calicoctl apply -f bgpconfig.yaml
 # calico 对等体
 calicoctl apply -f per-node-bgppeer_rack1.yaml
 calicoctl apply -f per-node-bgppeer_rack2.yaml
+
+
+# 发布clusterip (svc 集群内IP)
+
+sh adv-clusterip.sh
+观察leaf的bgp路由 (vyos   su vyso; conf)
+show ip route
 
 
 ```
