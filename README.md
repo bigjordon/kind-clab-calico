@@ -251,7 +251,7 @@ calico server rule
 
 use iptablese-nft
 
-iptabes-nft-save
+iptabes-nft-save (iptables-nft -t nat  -L 也可以)
 
 -A KUBE-SVC-JD5MR3NA4I4DYORP ! -s 10.244.0.0/16 -d 10.96.0.10/32 -p tcp -m comment --comment "kube-system/kube-dns:metrics cluster IP" -m tcp --dport 9153 -j KUBE-MARK-MASQ
 
