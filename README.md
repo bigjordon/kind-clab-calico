@@ -193,4 +193,56 @@ su vyos
 configure
 show protocals bgp
 
+
+
+
+K8s
+kubectl exec -it -n kube-system  calico-node-xxx /bin/bash
+
+ip l
+
+
+
+birdcl
+> show route
+
+0.0.0.0/0          via 192.168.5.1 on net0 [kernel1 07:29:23] * (10)
+10.244.216.0/26    via 192.168.5.1 on net0 [Node_192_168_5_1 12:17:49] * (100/?) [AS65008i]
+192.168.5.0/24     dev net0 [direct1 07:29:23] * (240)
+                   via 192.168.5.1 on net0 [Node_192_168_5_1 08:13:29] (100/0) [i]
+192.168.8.0/24     via 192.168.5.1 on net0 [Node_192_168_5_1 08:13:29] * (100/?) [AS65008i]
+10.244.166.64/26   via 192.168.5.1 on net0 [Node_192_168_5_1 12:17:49] * (100/?) [AS65008i]
+10.96.0.0/16       blackhole [static1 09:32:45] * (200)
+                   via 192.168.5.10 on net0 [Node_192_168_5_1 09:32:45 from 192.168.5.1] (100/0) [i]
+172.18.0.0/16      dev eth0 [direct1 07:29:23] * (240)
+10.244.47.70/32    dev calid9ae7747067 [kernel1 12:56:40] * (10)
+10.244.47.65/32    dev cali57a2c17394f [kernel1 07:29:24] * (10)
+10.244.47.64/26    blackhole [static1 07:29:23] * (200)
+10.244.47.64/32    dev caliec8352872f8 [kernel1 07:29:23] * (10)
+10.244.47.67/32    dev cali0c3fb660b78 [kernel1 07:29:32] * (10)
+10.244.47.66/32    dev cali84c25612ad8 [kernel1 07:29:29] * (10)
+
+> show interfaces
+lo up (index=1)
+	MultiAccess AdminUp LinkUp Loopback Ignored MTU=65536
+	127.0.0.1/8 (Primary, scope host)
+caliec8352872f8 DOWN (index=2)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+eth0 up (index=58)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+	172.18.0.4/16 (Primary, scope site)
+net0 up (index=82)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=9500
+	192.168.5.11/24 (Primary, scope site)
+cali57a2c17394f DOWN (index=3)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+cali84c25612ad8 DOWN (index=6)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+cali0c3fb660b78 DOWN (index=7)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+calid9ae7747067 DOWN (index=10)
+	MultiAccess Broadcast Multicast AdminUp LinkUp MTU=1500
+
+
+
 ```
