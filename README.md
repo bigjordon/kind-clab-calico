@@ -25,6 +25,9 @@ Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/
 Once done ,we can get a K8S cluster without CNI.
 ```
 sudo kind get kubeconfig --name clab-bgp-cplane-demo > ~/.kube/config
+sudo kind get kubeconfig --name clab-bgp-cplane-demo > /home/jordon/.kube/config
+kubectl port-forward service/kubernetes 443:443
+
 
 
 # kubectl get nodes -owide 
@@ -149,8 +152,8 @@ bash patch-node-asNumber.sh
 calicoctl apply -f bgpconfig.yaml
 
 # calico 对等体
-calicctl apply -f per-node-bgppeer_rack1.yaml
-calicctl apply -f per-node-bgppeer_rack2.yaml
+calicoctl apply -f per-node-bgppeer_rack1.yaml
+calicoctl apply -f per-node-bgppeer_rack2.yaml
 
 
 ```
