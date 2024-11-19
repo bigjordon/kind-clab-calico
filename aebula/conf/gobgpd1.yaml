@@ -1,0 +1,8 @@
+global:
+    config:
+        as: 65010
+        router-id: 192.168.8.21
+neighbors:
+    - config:
+        neighbor-address: 192.168.8.1
+        peer-as: 65008

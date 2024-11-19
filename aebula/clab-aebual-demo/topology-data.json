@@ -1,0 +1,162 @@
+{
+  "name": "aebual-demo",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-6bde270be888",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "br-leaf1": {
+      "index": "0",
+      "shortname": "br-leaf1",
+      "longname": "clab-aebual-demo-br-leaf1",
+      "fqdn": "br-leaf1.aebual-demo.io",
+      "group": "",
+      "labdir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/br-leaf1",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6bde270be888",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/br-leaf1",
+        "clab-node-name": "br-leaf1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/jordon/workspace/clab/clab/aebula/aebula.topo.yaml",
+        "containerlab": "aebual-demo"
+      },
+      "port-bindings": [
+      ]
+    },
+    "go-bgp1": {
+      "index": "1",
+      "shortname": "go-bgp1",
+      "longname": "clab-aebual-demo-go-bgp1",
+      "fqdn": "go-bgp1.aebual-demo.io",
+      "group": "",
+      "labdir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/go-bgp1",
+      "kind": "linux",
+      "image": "burlyluo/nettoolbox:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6bde270be888",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/go-bgp1",
+        "clab-node-name": "go-bgp1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/jordon/workspace/clab/clab/aebula/aebula.topo.yaml",
+        "containerlab": "aebual-demo"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "go-bgp2": {
+      "index": "2",
+      "shortname": "go-bgp2",
+      "longname": "clab-aebual-demo-go-bgp2",
+      "fqdn": "go-bgp2.aebual-demo.io",
+      "group": "",
+      "labdir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/go-bgp2",
+      "kind": "linux",
+      "image": "burlyluo/nettoolbox:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-6bde270be888",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/jordon/workspace/clab/clab/aebula/clab-aebual-demo/go-bgp2",
+        "clab-node-name": "go-bgp2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/jordon/workspace/clab/clab/aebula/aebula.topo.yaml",
+        "containerlab": "aebual-demo"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "br-leaf1",
+        "interface": "br-aebula-net1",
+        "mac": "aa:c1:ab:1e:b7:43",
+        "peer": "z"
+      },
+      "z": {
+        "node": "go-bgp1",
+        "interface": "net0",
+        "mac": "aa:c1:ab:4d:6a:a5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "br-leaf1",
+        "interface": "br-aebula-net2",
+        "mac": "aa:c1:ab:39:45:2f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "go-bgp2",
+        "interface": "net0",
+        "mac": "aa:c1:ab:d2:38:82",
+        "peer": "a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+name: aebual-demo
+topology:
+  nodes:
+
+    br-leaf1:
+      kind: bridge
+
+    go-bgp1:
+      kind: linux
+      image: bigjordon/nettoolbox:0.0.3-gobgp
+      binds:
+        - ./conf/go-bgp.nginx.conf:/etc/nginx/nginx.conf
+        - ./conf/gobgpd1.yaml:/etc/gobgp/gobgpd.yaml
+      exec:
+      - ip addr add 10.100.0.0/16 dev lo
+      - ip addr add 192.168.8.21/24 dev net0
+      - ip route replace default via 192.168.8.1
+      - gobgp global rib add 10.100.0.0/16 -a ipv4 origin igp aspath 65010
+
+    go-bgp2:
+      kind: linux
+      image: bigjordon/nettoolbox:0.0.3-gobgp
+      binds:
+        - ./conf/go-bgp.nginx.conf:/etc/nginx/nginx.conf
+        - ./conf/gobgpd2.yaml:/etc/gobgp/gobgpd.yaml
+      exec:
+      - ip addr add 10.100.0.0/16 dev lo
+      - ip addr add 192.168.8.22/24 dev net0
+      - ip route replace default via 192.168.8.1
+      - gobgp global rib add 10.100.0.0/16 -a ipv4 origin igp aspath 65010
+
+  links:
+    - endpoints: ["br-leaf1:br-aebula-net1", "go-bgp1:net0"]
+    - endpoints: ["br-leaf1:br-aebula-net2", "go-bgp2:net0"]
+

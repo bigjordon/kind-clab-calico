@@ -46,7 +46,7 @@ clab-bgp-cplane-demo-worker3         NotReady   <none>                 14m   v1.
  brctl addbr br-leaf1
  ifconfig br-leaf1 up
 
-# clab -t topo.yaml deploy 
+# clab -t topo.yaml deploy  [clab -t topo.yaml destroy]
 ----
 使用startup-config 的配置文件配置vyos的网络
 
@@ -254,5 +254,24 @@ use iptablese-nft
 iptabes-nft-save (iptables-nft -t nat  -L 也可以)
 
 -A KUBE-SVC-JD5MR3NA4I4DYORP ! -s 10.244.0.0/16 -d 10.96.0.10/32 -p tcp -m comment --comment "kube-system/kube-dns:metrics cluster IP" -m tcp --dport 9153 -j KUBE-MARK-MASQ
+
+```
+
+
+eabula ecmp
+create Vip cluster
+
+
+```
+clab -t aebula.topo.yaml deploy   [clab -t aebula.topo.yaml destroy]
+
+leaf1
+set protocols bgp 65008 neighbor 192.168.8.21 remote-as 65010
+set protocols bgp 65008 neighbor 192.168.8.22 remote-as 65010
+
+
+topo.yaml 里边如果有命令的话，单独重启docker不会执行，
+
+去容器里边手动执行一下，或者，destroy然后重建
 
 ```
